@@ -11,7 +11,7 @@ There are two options/ways to build a c and/or c++ file
   note: you don't have to pass the extension of the file when using this build script
   example: build main
   
-  note: the default directory of the compiled c/c++ file is in ..\bin directory you can specify it manualy
+  note: the default directory of the compiled c/c++ file is in ..\bin, directory you can specify it manualy
   example: build main
   the main.exe file will compiled to the ..\bin directory.
 
