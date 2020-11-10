@@ -2,7 +2,7 @@
 A C/C++ Builder written in batch 
 
 HOW TO USE:
-There are two options/ways to build a c and/or c++ file 
+There are two sections/way/option to build a c and/or c++ file 
   - the first one is Main which is a way of compiling a c/c++ code without using any external libraries
   - the second is External option, which will compile a c/c++ with external libraries
   
