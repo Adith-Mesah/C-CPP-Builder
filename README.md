@@ -31,3 +31,4 @@ pattern: build file_name "include_path" "library_path" "-llib1 -llib2 -land_so_o
 example: build main "C:\SDL\include" "C:\SDL\lib" "-mingw32 -lSDL2main -lSDL2"
 example: build main "C:\SDL\include" "C:\SDL\lib" "-mingw32 -lSDL2main -lSDL2" C:\dev
   
+"SORRY IF YOU CAN'T UNDERSTAND MY ENGLISH"
