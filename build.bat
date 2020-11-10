@@ -9,7 +9,7 @@ rem Changeable variables
 rem FILETYPE -> specify the translation unit file type
 rem COMPILER -> specify the compiler. supported compiler: g++(c++) and gcc(c)
 rem AUTO_RUN -> run the application after compilation
-rem EXECUTEABLE_DIR -> specify the location where the executeable file will be placed
+rem EXECUTEABLE_DIR -> specify the location where the executable file will be placed
 set FILETYPE=cpp
 set COMPILER=g++
 set AUTO_RUN=true
@@ -17,8 +17,13 @@ set EXECUTEABLE_DIR=..\bin
 
 set INCLUDEPATH_EXIST=false
 set LIBPATH_EXIST=false
-set LIBFLAGS_EXIST=false 
+set LIBFLAGS_EXIST=false
 
+
+if "%FILE_NAME%"=="/?" goto Help
+if "%FILE_NAME%"=="-?" goto Help
+if "%FILE_NAME%"=="-h" goto Help
+if "%FILE_NAME%"=="--help" goto Help
 
 set "XINCLUDE_PATH=%INCLUDE_PATH: =%"
 set "XLIB_PATH=%LIB_PATH: =%"
@@ -45,7 +50,7 @@ goto Main
 
 
 :Main
-        
+
 
     if "%INCLUDE_PATH%"=="-f" (
         if not "%LIB_PATH%"=="" (
@@ -68,11 +73,11 @@ goto Main
     if not "%LAST_PAR%"=="" (
         set EXECUTEABLE_DIR=%LAST_PAR%
     )
-    
+
     set INCLUDE_PATH=%INCLUDE_PATH:"=%
     set LIB_PATH=%LIB_PATH:"=%
     set LIB_FLAGS=%LIB_FLAGS:"=%
-    
+
     echo [INFO]: include path               : %INCLUDE_PATH%
     echo [INFO]: library path               : %LIB_PATH%
     echo [INFO]: library flags              : %LIB_FLAGS%
@@ -97,18 +102,34 @@ goto Main
             %DIR%.exe
             pause
         )
-   ) 
+   )
    if not "%AUTO_RUN%"=="true" (
        echo [STATUS]: file compilation done.
    )
 
    exit /b
 
-  
+
+
+:Help
+  echo build [file name no extension] [[include path][-f]] [[library path][executable directory]] [library links] (executable path)
+  echo sections
+  echo    Main                    : used to build without external libraries
+  echo    External                : used to build with external libraries
+  echo option:
+  echo    -f                      : specify where the executable file will be placed. only be used with Main section.
+  echo arguments:
+  echo    file name no extension  : specify file to build with no extension
+  echo    include path            : path to headers directory of the external libraries
+  echo    library path            : path to library directory of the external libraries
+  echo    library links           : specify what library/libraries will be linked
+  echo    executable directory    : location of where the executable will be placed
+
+  exit /b
+
 :strLen
-setlocal enabledelayedexpansion
+  setlocal enabledelayedexpansion
 
 :strLen_Loop
    if not "!%1:~%len%!"=="" set /A len+=1 & goto :strLen_Loop
    (endlocal & set %2=%len%)
-
