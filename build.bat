@@ -1,4 +1,4 @@
-@echo off
+
 
 set FILE_NAME=%1
 set INCLUDE_PATH=%2
